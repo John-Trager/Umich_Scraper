@@ -17,7 +17,7 @@ import csv
 file_url = "PATH TO LOGIN FILE" # !!you must add the path to your login.csv and put the correct values into the file!!
 debug = False
 
-def sendEmail(email_receiver, subject, body):
+def sendEmail(email_receiver='', subject='', body=''):
     """
     :input: email_receiver: the email address to who the email is going to (string)
     :input: subject: the subject of the email (string)
@@ -47,15 +47,15 @@ def sendEmail(email_receiver, subject, body):
             #login
             smtp.login(email_address, email_password)
 
+            if email_receiver != '':
+                email_sender = email_receiver
 
-            email_sender = email_receiver
-            #email_sender = "autobot5067@gmail.com"
             subject = subject
             body = body
 
             msg = 'Subject: {}\n\n{}'.format(subject,body)
 
-            #(sender,receiver,msg)
+
             smtp.sendmail(email_address, email_sender, msg)
 
             print("SENT")

@@ -169,8 +169,8 @@ class Scrap:
             if self.buffer[0] == self.buffer[1]:
                 return False
             else:
-                sendEmail.sendEmail("johntrager0226@gmail.com","UMich Class Update",
-                "A class has changed at: \n" + str(self.URL) + "\n\nDate Time Occurred: " + str(datetime.datetime.now()) +
+                sendEmail.sendEmail(subject="UMich Class Update",
+                msg="A class has changed at: \n" + str(self.URL) + "\n\nDate Time Occurred: " + str(datetime.datetime.now()) +
                 "\n\nClass Number: " + str(self.classNum)+ "\n\nValue changed: " + str(self.buffer[0]) + " to " + str(self.buffer[1]))
                 return True
         else:
