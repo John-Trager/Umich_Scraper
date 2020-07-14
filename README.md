@@ -3,7 +3,7 @@
  
  # Requirments
 You must install python3 and the following python libraries to run the code 
- - python3.x go to https://python.org/downloads to downlaod and install python3
+ - python3.x go to https://python.org/downloads to download and install python3
  - smtplib python module https://pypi.org/project/secure-smtplib/
  - requests python modeul https://pypi.org/project/requests/
  - BeautifulSoup4 python module https://pypi.org/project/beautifulsoup4/
