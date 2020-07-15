@@ -5,7 +5,7 @@ import time
 from bs4 import BeautifulSoup
 
 """
-scrape class infomration from LSA Course Guide. Can be used as a general API for information of classes.
+scrape class information from LSA Course Guide. Can be used as a general API for information of classes.
 I use it to let me know if Restricted seats change so like enrollment management and Y1, Y2, Y3, Y4 reserved seats.
 Check out how the code works and how you can use it at https://github.com/john-trager/
 @author John Trager 6-29-20 -> 7-1-20
@@ -15,7 +15,7 @@ Check out how the code works and how you can use it at https://github.com/john-t
 class Scrap:
     """
     Scrap object used to scrape an LSA course from LSA course guide
-    Simply assign a URL to the onbject call loadData and parseData 
+    Simply assign a URL to the object call loadData and parseData 
     """
 
     def __init__(self, URL=""):
@@ -57,7 +57,7 @@ class Scrap:
         self.classNum = [] #int
         self.classOpen = [] #bool
         self.openSeatNum = [] #the number of open seats int
-        self.section = [] #section numebr int
+        self.section = [] #section number int
         self.classType = [] #string of class type: (sem), (dis), or (lec)
         self.restrictedSeats = [] #list of lists of restricted seats
 
@@ -96,13 +96,13 @@ class Scrap:
             self.temp2.append(self.temp3)
 
         #print(self.temp2)
-        #add temp2 (col-md-2) to all_tables in corosponding sub arrays (adding open restricted seats)
+        #add temp2 (col-md-2) to all_tables in corresponding sub arrays (adding open restricted seats)
         for j in range(1, len(self.all_tables[0])):
             self.all_tables[0][j].append(self.temp2[j-1])
 
     def parseData(self):
         """
-        Takes the data from self.all_tables and seperates it into catagorized lists
+        Takes the data from self.all_tables and separates it into categorized lists
         (such as the class number, how many seats are open, etc...)
         Note: First call loadData before parsing data
         """
@@ -118,11 +118,11 @@ class Scrap:
     def getRestricted(self,panel):
         """
         :Input: panel: the section/panel of the class starting from 0 to the n-1 number of sections on the page.
-        Takes list of self.restrictedSeats of the corosponding panel and 
+        Takes list of self.restrictedSeats of the corresponding panel and 
         parses to figure out how many seats are reserved for:
         -Enrollment Management
         -Y1 ,Y2, Y3, Y4 (certain year students)
-        @return: returns the number of seats reserverd in a set: (# Enroll Mangament, # Y1, # Y2, # Y3, # Y4)
+        @return: returns the number of seats reserved in a set: (# Enroll Management, # Y1, # Y2, # Y3, # Y4)
         TODO: fix edge case of "Y1 or Y2" combos
         """
         self.em = 0
@@ -156,7 +156,7 @@ class Scrap:
 
     def getRSeatsChange(self):
         """
-        Retunrns bool if restrcited seats changed any values
+        Returns bool if restricted seats changed any values
         Sends Email to specified email if value changed
         """
 
@@ -180,16 +180,16 @@ class Scrap:
 if __name__ == "__main__":
     c = 0
 
-    #put URLs from LSA course guide of classes you want to moniter here
+    #put URLs from LSA course guide of classes you want to monitor here
     urls = ["https://www.lsa.umich.edu/cg/cg_detail.aspx?content=2310PHIL183002&termArray=f_20_2310",
             "https://www.lsa.umich.edu/cg/cg_detail.aspx?content=2310CLCIV120003&termArray=f_20_2310",
             "https://www.lsa.umich.edu/cg/cg_detail.aspx?content=2310COMM159001&termArray=f_20_2310",
             "https://www.lsa.umich.edu/cg/cg_detail.aspx?content=2310COMM159001&termArray=f_20_2310"]
 
-    #creats Scrap object for url in URLs
+    #creates Scrap object for url in URLs
     watchlist = [Scrap() for i in range(len(urls))]
 
-    #set urls to corosponding Scrap object in watchlist
+    #set urls to corresponding Scrap object in watchlist
     for idx, class_ in enumerate(watchlist):
         class_.setURL(urls[idx])
 
