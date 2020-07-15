@@ -13,6 +13,7 @@ You must install python3 and the following python libraries to run the code.
  - python3.x go to https://python.org/downloads to download and install python3
  - requests python module https://pypi.org/project/requests/
  - BeautifulSoup4 python module https://pypi.org/project/beautifulsoup4/
+ 
  If you have pip you can use the requirements.txt to easily install the required modules.
  
  # Getting started
